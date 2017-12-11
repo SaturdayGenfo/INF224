@@ -5,7 +5,11 @@
 class Video : public Multimedia
 {
 public:
+	
     Video(int d = 0, std::string name = "" , std::string p = "") : Multimedia(name, p) { duration = d; }
+    ~Video() {}
+
+
     int getDuration() const { return duration; }
     void setDuration(int d) { duration = d ;}
 

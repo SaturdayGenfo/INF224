@@ -7,8 +7,8 @@ class Multimedia
 {
 public:
     Multimedia();
-    ~Multimedia();
     Multimedia(std::string name, std::string path);
+    ~Multimedia();
 
     void setName(std::string n);
     void setPath(std::string p);

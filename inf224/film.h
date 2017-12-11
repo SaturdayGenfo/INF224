@@ -5,12 +5,12 @@
 class Film : public Video
 {
 public:
-    Film(int * chap = nullptr, int n = 0, int d =0, std::string name, std::string path);
+    Film(int * chap = nullptr, int n = 0, int d =0, std::string name = "", std::string path = "");
     ~Film();
 
     void setChapitres(int * chap, int n);
     int getNChapitres() const { return nchap; }
-    void getChapitres(int * tab);
+    int const * getChapitres() const;
 
 private:
     int * chapitres;

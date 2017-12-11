@@ -13,6 +13,10 @@ Multimedia::Multimedia(string name, string path)
     this->name = name;
     this->path = path;
 }
+Multimedia::~Multimedia()
+{
+
+}
 
 void Multimedia::setName(string n)
 {
@@ -37,3 +41,6 @@ void Multimedia::affichage(ostream &stream) const
     stream << "Nom : " << this->getName() << endl;
     stream << "Chemin : " << this->getPath() << endl;
 }
+
+
+

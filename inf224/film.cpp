@@ -1,6 +1,6 @@
 #include "film.h"
 
-Film::Film(int * chap = nullptr, int n = 0, int d =0, string name, string path) : Video(d, name, path)
+Film::Film(int * chap, int n, int d, std::string name, std::string path) : Video(d, name, path)
 {
     this->chapitres = nullptr;
     this->nchap = n;
@@ -18,16 +18,21 @@ Film::~Film()
     delete[] this->chapitres;
 }
 
-void Film::setChapitres(int *chap)
+void Film::setChapitres(int *chap, int n)
 {
+
+    delete[] this->chapitres;
+
+    this->nchap = n;
+    this->chapitres = new int[n];
+
     for(int i=0; i< this->nchap ; i++)
         this->chapitres[i] = chap[i];
 }
 
-void Film::getChapitres(int *tab)
+int const * Film::getChapitres() const
 {
-    for(int i=0; i < this->nchap; i++)
-        tab[i] = this->chapitres[i];
+    return this->chapitres;
 }
 
 
