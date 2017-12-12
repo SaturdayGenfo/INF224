@@ -28,6 +28,8 @@ void Film::setChapitres(const int *chap, int n)
 {
 
     delete[] this->chapitres;
+
+    this->chapitres = nullptr;
     this->nchap = n;
 
     if(n > 0)

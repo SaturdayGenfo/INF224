@@ -45,6 +45,9 @@ int main(int argc, char* argv[]) {
   g->display(cout);
   delete g;
   g2->display(cout);
+  delete g2;
+
+  m.reset();
 
 
 }
