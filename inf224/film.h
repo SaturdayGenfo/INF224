@@ -7,8 +7,9 @@ class Film : public Video
 public:
     Film(int * chap = nullptr, int n = 0, int d =0, std::string name = "", std::string path = "");
     ~Film();
+    Film(const Film & from);
 
-    void setChapitres(int * chap, int n);
+    void setChapitres(const int * chap, int n) ;
     int getNChapitres() const { return nchap; }
     int const * getChapitres() const;
 

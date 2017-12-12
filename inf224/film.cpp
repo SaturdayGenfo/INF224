@@ -18,16 +18,25 @@ Film::~Film()
     delete[] this->chapitres;
 }
 
-void Film::setChapitres(int *chap, int n)
+Film::Film(const Film & from)
+{
+    this->chapitres = nullptr;
+    this->setChapitres(from.getChapitres(), from.getNChapitres());
+}
+
+void Film::setChapitres(const int *chap, int n)
 {
 
     delete[] this->chapitres;
-
     this->nchap = n;
-    this->chapitres = new int[n];
 
-    for(int i=0; i< this->nchap ; i++)
-        this->chapitres[i] = chap[i];
+    if(n > 0)
+    {
+        this->chapitres = new int[n];
+        for(int i=0; i< this->nchap ; i++)
+            this->chapitres[i] = chap[i];
+    }
+
 }
 
 int const * Film::getChapitres() const

@@ -1,4 +1,5 @@
 #include "multimedia.h"
+#include <iostream>
 using namespace std;
 
 
@@ -15,6 +16,7 @@ Multimedia::Multimedia(string name, string path)
 }
 Multimedia::~Multimedia()
 {
+    cout << "OHHH SEIGNEUR DIEU ! JE DECEDE ! -" << this->getName() << endl;
 
 }
 
