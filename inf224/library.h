@@ -17,10 +17,13 @@ class Library
 public:
     Library();
 
-    PhotoPtr create();
-    VideoPtr create();
-    FilmPtr  create();
-    GroupePtr create();
+    PhotoPtr create(double lng = 0, double lat = 0, std::string name = "" , std::string p = "");
+    VideoPtr create(int d = 0, std::string name = "" , std::string p = "");
+    FilmPtr  create(int * chap = nullptr, int n = 0, int d =0, std::string name = "", std::string path = "");
+    GroupePtr create(std::string n = "");
+
+    void searchDisplay(std::string name, std::ostream & stream);
+    void play(std::string name);
 
 
 
