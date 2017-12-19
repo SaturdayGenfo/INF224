@@ -5,7 +5,9 @@
 class Film : public Video
 {
 public:
-    Film( );
+
+
+    Film(int * chap = nullptr, int n = 0, int d =0, std::string name = "", std::string path = "");
     ~Film();
     Film(const Film & from);
 

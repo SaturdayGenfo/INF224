@@ -8,6 +8,7 @@
 #include "video.h"
 #include "film.h"
 #include "groupe.h"
+#include "library.h"
 
 using namespace std;
 
@@ -48,6 +49,16 @@ int main(int argc, char* argv[]) {
   delete g2;
 
   m.reset();
+
+  Library *l = new Library();
+  VideoPtr v = l->createVideo(5, "Burn After Reading ", "Z:/mooovie.mp4");
+
+  v->affichage(cout);
+
+  l->displayMult("Burn After Reading ", cout);
+
+  
+
 
 
 }
