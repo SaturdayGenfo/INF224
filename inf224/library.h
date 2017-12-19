@@ -25,6 +25,7 @@ public:
     void displayMult(std::string name, std::ostream & stream);
     void displayGroup(std::string name, std::ostream & stream);
     void play(std::string name);
+    void remove(std::string name);
 
 
 

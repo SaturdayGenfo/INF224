@@ -18,7 +18,7 @@ VideoPtr Library::createVideo(int d, string name, string p)
 {
 	VideoPtr video(new Video(d, name, p));
 	this->objetsmult[name] = video;
-	return video;
+    return video;
 }
 
 FilmPtr Library::createFilm(int * chap, int n, int d, string name, string p)
@@ -61,4 +61,20 @@ void Library::play(string name)
 		element->second->play();
 	else
 		cout << "FICHIER NON TROUVE " << endl;
+}
+void Library::remove(string name)
+{
+    this->objetsmult.erase(name);
+    for(auto g : this->groupes)
+    {
+        auto it = g.second->begin();
+        while (it != g.second->end())
+        {
+            if(it->get()->getName() == name)
+                it = g.second->erase(it);
+            else
+                it++;
+        }
+    }
+
 }
