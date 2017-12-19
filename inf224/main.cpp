@@ -52,12 +52,21 @@ int main(int argc, char* argv[]) {
 
   Library *l = new Library();
   VideoPtr v = l->createVideo(5, "Burn After Reading ", "Z:/mooovie.mp4");
+  VideoPtr v2 = l->createVideo(899, "Goodfellas", "C:/illegal/downnloads/movie.movie");
+  PhotoPtr p(l->createPhoto(45, 78, "Hot pic", "C:/hotpix/pics"));
+  GroupePtr GG = l->createGroupe("MOVIES");
 
-  v->affichage(cout);
+  GG->push_back(v);
+  GG->push_back(v2);
 
-  l->displayMult("Burn After Reading ", cout);
 
-  
+
+  l->displayGroup("MOVIES", cout);
+
+  v.reset();
+  v2.reset();
+
+  p.reset();
 
 
 
