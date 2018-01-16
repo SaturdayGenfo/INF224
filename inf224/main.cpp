@@ -34,6 +34,8 @@ int main(int argc, char* argv[]) {
   	cout << x[k] << " ";
   cout << endl;
 
+  delete f;
+
   Groupe * g = new Groupe("Vacances");
   MultimediaPtr m(new Photo(0.5, 156, "The Incredebiles", "c:/file/movie.avi"));
 

@@ -8,7 +8,7 @@ public:
 
 
     Film(int * chap = nullptr, int n = 0, int d =0, std::string name = "", std::string path = "");
-    ~Film();
+    virtual ~Film();
     Film(const Film & from);
 
     void setChapitres(const int * chap, int n) ;
