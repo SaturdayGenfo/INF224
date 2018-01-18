@@ -1,11 +1,13 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 #include <map>
+#include <sstream>
 #include "groupe.h"
 #include "multimedia.h"
 #include "film.h"
 #include "video.h"
 #include "photo.h"
+#include "tcpserver.h"
 
 typedef std::shared_ptr<Groupe> GroupePtr;
 typedef std::shared_ptr<Photo> PhotoPtr;
@@ -26,6 +28,10 @@ public:
     void displayGroup(std::string name, std::ostream & stream);
     void play(std::string name);
     void remove(std::string name);
+
+
+    //Cote Serveur
+    bool processRequest(cppu::TCPConnection& cnx, const std::string& request, std::string& response);
 
 
 

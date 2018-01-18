@@ -9,6 +9,7 @@
 #include <iostream>
 #include <sstream>
 #include "tcpserver.h"
+#include "library.h"
 using namespace std;
 using namespace cppu;
 
@@ -38,7 +39,13 @@ public:
 
     // 1) pour decouper la requête:
     // on peut par exemple utiliser stringstream et getline()
-    
+
+    string command, name;
+    stringstream ss;
+    ss.str(request);
+    ss >> command >> name;
+    cout << name << endl;
+
     
     // 2) faire le traitement:
     // - si le traitement modifie les donnees inclure: TCPLock lock(cnx, true);
@@ -53,7 +60,9 @@ public:
     //   ils servent à délimiter les messages entre le serveur et le client
     
     response = "OK: " + request;
-    cerr << "response: " << response << endl;
+    cerr << "response: ";
+
+    cerr << endl;
     
     // renvoyer false si on veut clore la connexion avec le client
     return true;

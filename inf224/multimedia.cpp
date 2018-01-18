@@ -40,8 +40,19 @@ string Multimedia::getPath() const
 
 void Multimedia::affichage(ostream &stream) const
 {
-    stream << "Nom : " << this->getName() << endl;
-    stream << "Chemin : " << this->getPath() << endl;
+    stream << "Nom : " << this->getName() <<  " Chemin : " << this->getPath();
+}
+
+void Multimedia::write(ostream &f) const
+{
+    f << this->name << endl;
+    f << this->path << endl;
+}
+
+void Multimedia::read(istream &f)
+{
+    getline(f, this->name);
+    getline(f, this->path);
 }
 
 

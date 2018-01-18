@@ -14,6 +14,10 @@ public:
     void setChapitres(const int * chap, int n) ;
     int getNChapitres() const { return nchap; }
     int const * getChapitres() const;
+    void affichage(std::ostream& stream) const override;
+
+    void read(std::istream &f) override;
+    void write(std::ostream &f) const override;
 
 private:
     int * chapitres;

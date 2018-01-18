@@ -46,8 +46,39 @@ int const * Film::getChapitres() const
     return this->chapitres;
 }
 
-void filler(){
-    
+void Film::affichage(std::ostream &stream) const
+{
+    Video::affichage(stream);
+    stream << " No Chapitres : " << this->nchap << " ;; ";
+    stream << "Liste des Chapitres : ";
+    for(int i=0; i < this->nchap; i++)
+    {
+        stream << chapitres[i];
+        if(i < this->nchap - 1)
+            stream << " ";
+    }
+    stream << " ;;";
 }
 
+void Film::write(std::ostream &f) const
+{
+    Video::write(f);
+    f << this->nchap << std::endl;
+    for(int i=0; i < this->nchap; i++)
+    {
+        f << chapitres[i];
+        if(i < this->nchap - 1)
+            f << " ";
+    }
+
+}
+void Film::read(std::istream &f)
+{
+    Video::read(f);
+    f >> this->nchap;
+    this->chapitres = new int[this->nchap];
+    for(int i = 0; i < this->nchap; i++)
+        f >> this->chapitres[i];
+
+}
 

@@ -3,14 +3,20 @@
 //  
 
 #include <iostream>
+#include <fstream>
 #include "multimedia.h"
 #include "photo.h"
 #include "video.h"
 #include "film.h"
 #include "groupe.h"
 #include "library.h"
+#include "tcpserver.h"
 
 using namespace std;
+using namespace cppu;
+
+const int PORT = 3331;
+
 
 int main(int argc, char* argv[]) {
 
@@ -34,7 +40,6 @@ int main(int argc, char* argv[]) {
   	cout << x[k] << " ";
   cout << endl;
 
-  delete f;
 
   Groupe * g = new Groupe("Vacances");
   MultimediaPtr m(new Photo(0.5, 156, "The Incredebiles", "c:/file/movie.avi"));
@@ -52,26 +57,49 @@ int main(int argc, char* argv[]) {
 
   m.reset();
 
-  Library *l = new Library();
+  shared_ptr<Library> l(new Library());
   VideoPtr v = l->createVideo(5, "Burn After Reading ", "Z:/mooovie.mp4");
   VideoPtr v2 = l->createVideo(899, "Goodfellas", "C:/downnloads/movie.movie");
-  PhotoPtr p = l->createPhoto(45, 78, "pic", "C:/pix/pics");
+  PhotoPtr p = l->createPhoto(45, 78, "pic", "image.jpg");
   GroupePtr GG = l->createGroupe("MOVIES");
 
   GG->push_back(v);
   GG->push_back(v2);
-
-  v2.reset();
-
+  /*
 
 
-  l->displayGroup("MOVIES", cout);
+  // cree le TCPServer
+  shared_ptr<TCPServer> server(new TCPServer());
 
-  l->remove("Goodfellas");
 
-  l->displayGroup("MOVIES", cout);
+  // le serveur appelera cette méthode chaque fois qu'il y a une requête
+  server->setCallback(*l, &Library::processRequest);
 
-  delete l;
+  // lance la boucle infinie du serveur
+  cout << "Starting Server on port " << PORT << endl;
+  int status = server->run(PORT);
+
+  // en cas d'erreur
+  if (status < 0) {
+    cerr << "Could not start Server on port " << PORT << endl;
+    return 1;
+  }
+    */
+
+  ofstream file("serial.txt");
+
+  f->write(file);
+
+  file.close();
+
+  ifstream file2("serial.txt");
+  FilmPtr testing(new Film());
+  testing->read(file2);
+  cout << "HERE IS WHAT I WAS ABLE TO READ ////" << endl;
+  testing->affichage(cout);
+
+
+  return 0;
 
 
 

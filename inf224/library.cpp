@@ -1,5 +1,6 @@
 #include "library.h"
 using namespace std;
+using namespace cppu;
 
 
 Library::Library()
@@ -77,4 +78,56 @@ void Library::remove(string name)
         }
     }
 
+}
+
+bool Library::processRequest(TCPConnection& cnx, const string& request, string& response)
+{
+  cerr << "\nRequest: '" << request << "'" << endl;
+  string command, name;
+  stringstream ss;
+  ss.str(request);
+  ss >> command >> name;
+  cout << name << endl;
+  // 2) faire le traitement:
+  // - si le traitement modifie les donnees inclure: TCPLock lock(cnx, true);
+  // - sinon juste: TCPLock lock(cnx);
+  stringstream stream;
+
+
+
+  if(command=="searchgrp")
+  {
+
+      this->displayGroup(name, stream);
+
+  }
+  else if(command=="searchmult")
+  {
+
+      this->displayMult(name, stream);
+
+  }
+  else if(command=="play")
+  {
+      this->play(name);
+  }
+
+
+
+
+
+  // 3) retourner la reponse au client:
+  // - pour l'instant ca retourne juste OK suivi de la requête
+  // - pour retourner quelque chose de plus utile on peut appeler la methode print()
+  //   des objets ou des groupes en lui passant en argument un stringstream
+  // - attention, la requête NE DOIT PAS contenir les caractères \n ou \r car
+  //   ils servent à délimiter les messages entre le serveur et le client
+
+  response = stream.str();
+  cerr << "response : ";
+  cerr << response;
+  cerr << endl;
+
+  // renvoyer false si on veut clore la connexion avec le client
+  return true;
 }

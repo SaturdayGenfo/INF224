@@ -1,6 +1,9 @@
 multimedia.o: multimedia.cpp multimedia.h
-main.o: main.cpp multimedia.h photo.h video.h film.h groupe.h library.h
+main.o: main.cpp multimedia.h photo.h video.h film.h groupe.h library.h \
+ tcpserver.h cppsocket.h
 film.o: film.cpp film.h video.h multimedia.h
 groupe.o: groupe.cpp groupe.h multimedia.h
 library.o: library.cpp library.h groupe.h multimedia.h film.h video.h \
- photo.h
+ photo.h tcpserver.h cppsocket.h
+tcpserver.o: tcpserver.cpp tcpserver.h cppsocket.h
+cppsocket.o: cppsocket.cpp cppsocket.h

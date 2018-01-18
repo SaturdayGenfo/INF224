@@ -16,8 +16,18 @@ public:
 
     void play() const override { system(("mpv " + this->getPath() + " &").c_str()); }
 
-    void affichage(std::ostream& stream) const override {
-        Multimedia::affichage(stream); stream << "Durée : " << duration << std::endl;
+    virtual void affichage(std::ostream& stream) const override {
+        Multimedia::affichage(stream); stream << " Durée : " << duration;
+    }
+
+    virtual void write(std::ostream &f) const override{
+        Multimedia::write(f);
+        f << duration << std::endl;
+    }
+
+    virtual void read(std::istream &f) override{
+        Multimedia::read(f);
+        f >> duration;
     }
 
 private:

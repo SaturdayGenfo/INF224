@@ -18,7 +18,17 @@ public:
 
     void affichage(std::ostream& stream) const override {
         Multimedia::affichage(stream) ;
-        stream << "Longitude : " << longitude  << " ; Lattitude : " << lattitude << std::endl;
+        stream << " Longitude : " << longitude  << " ; Lattitude : " << lattitude;
+    }
+
+    void write(std::ostream &f) const override {
+        Multimedia::write(f);
+        f << longitude << lattitude << std::endl;
+    }
+
+    void read(std::istream &f) override {
+        Multimedia::read(f);
+        f >> longitude >> lattitude;
     }
 
 private:

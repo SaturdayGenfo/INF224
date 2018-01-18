@@ -18,6 +18,11 @@ public:
     virtual void affichage(std::ostream& stream) const;
     virtual void play() const = 0;
 
+    //Serialisation
+    virtual void write(std::ostream &f) const;
+    virtual void read(std::istream &f);
+
+
 
 private:
     std::string name;
